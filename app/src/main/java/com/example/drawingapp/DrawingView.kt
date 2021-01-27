@@ -28,9 +28,13 @@ class DrawingView(context: Context,attrs: AttributeSet) : View(context, attrs) {
         mBrushSize = 20.toFloat()
     }
 
+    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
+        super.onSizeChanged(w, h, oldw, oldh)
+        mCanvasBitmap = Bitmap.createBitmap(w,h,Bitmap.Config.ARGB_8888)
+        canvas = Canvas(mCanvasBitmap!!)
+    }
     private var color = Color.BLACK
         internal inner class CustomPath(var color:Int,
                                         var brushThickness:Float) : android.graphics.Path(){
-
     }
 }
